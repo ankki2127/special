@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Malkin ❤️</title>
+    <!-- Tab Icon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    
+    <!-- WhatsApp / iMessage Link Preview -->
+    <meta property="og:title" content="For Malkin ❤️">
+    <meta property="og:description" content="Top Secret Birthday Protocol. Enter PIN to unlock.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;1,400&family=Courier+Prime&display=swap');
+
+        /* Native 100% Full Screen Body */
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #3a0013 0%, #1a0008 70%, #0a0003 100%);
+            font-family: 'Lora', serif;
+            color: #ffdae0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text y='24'>🐼</text></svg>") 16 16, auto;
+        }
+
+        button, .gift-container, .music-toggle, .particle, input {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text y='24'>🐼</text></svg>") 16 16, pointer;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 110px rgba(0, 0, 0, 0.9);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Confetti Cannon */
+        .confetti { 
+            position: absolute; 
+            width: 7.5px; 
+            height: 15px; 
+            top: -20px; 
+            z-index: 9999; 
+            animation: fall linear forwards; 
+        }
+        @keyframes fall { 
+            to { transform: translateY(110vh) rotate(720deg); opacity: 0; } 
+        }
+
+        /* Floating Hearts Background */
+        #particles { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            pointer-events: none; 
+            z-index: 1; 
+        }
+        .particle { 
+            position: absolute; 
+            color: rgba(255, 79, 135, 0.4); 
+            animation: floatUp linear infinite; 
+            pointer-events: auto; 
+            transition: transform 0.2s; 
+        }
+        .particle:hover { 
+            transform: scale(1.3); 
+            color: rgba(255, 79, 135, 0.8); 
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(2); opacity: 0; }
+        }
+
+        /* Sparkle Burst */
+        .sparkle { 
+            position: absolute; 
+            width: 4.5px; 
+            height: 4.5px; 
+            background: #ff85a1; 
+            border-radius: 50%; 
+            pointer-events: none; 
+            box-shadow: 0 0 7px #ff85a1, 0 0 15px #fff; 
+            animation: burst 0.6s ease-out forwards; 
+            z-index: 100; 
+        }
+        @keyframes burst { 
+            0% { transform: scale(1) translate(0, 0); opacity: 1; } 
+            100% { transform: scale(0) translate(var(--tx), var(--ty)); opacity: 0; } 
+        }
+
+        /* Floating Music Toggle */
+        .music-toggle { 
+            position: fixed; 
+            top: 18px; 
+            right: 18px; 
+            background: rgba(255, 133, 161, 0.15); 
+            border: 1px solid rgba(255, 133, 161, 0.5); 
+            color: #ffdae0; 
+            width: 33px; 
+            height: 33px; 
+            border-radius: 50%; 
+            font-size: 0.9rem; 
+            z-index: 1000; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: all 0.4s ease; 
+            box-shadow: 0 0 11px rgba(255, 133, 161, 0.2); 
+            padding: 0; 
+        }
+        .music-toggle.visible { opacity: 1; visibility: visible; }
+        .music-toggle:hover { background: rgba(255, 133, 161, 0.3); transform: scale(1.1); }
+        .music-toggle.muted { opacity: 0.5; box-shadow: none; }
+
+        /* Scene Management */
+        .scene { 
+            position: absolute; 
+            width: 100%; 
+            max-width: 880px; 
+            z-index: 10; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: opacity 1s ease, visibility 1s ease; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .scene.active { opacity: 1; visibility: visible; }
+
+        /* Typography */
+        h1 { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: clamp(2.2rem, 3.7vw, 3.3rem); 
+            color: #ff85a1; 
+            margin-bottom: 4px; 
+            text-shadow: 0 0 18px rgba(255, 133, 161, 0.4); 
+            font-weight: normal; 
+        }
+
+        /* Standard Buttons */
+        button { 
+            background: transparent; 
+            color: #ff85a1; 
+            border: 1px solid rgba(255, 133, 161, 0.5); 
+            padding: 8px 22px; 
+            border-radius: 30px; 
+            font-family: 'Lora', serif; 
+            font-size: 0.85rem; 
+            letter-spacing: 1.5px; 
+            margin-top: 11px; 
+            transition: all 0.4s ease; 
+            z-index: 50; 
+            position: relative; 
+        }
+        button:hover { 
+            background: rgba(255, 133, 161, 0.15); 
+            box-shadow: 0 0 18px rgba(255, 133, 161, 0.4); 
+            border-color: #ff85a1; 
+            transform: translateY(-2px); 
+        }
+
+        /* Voice Note Button */
+        .voice-btn { 
+            background: linear-gradient(145deg, #ff4f87, #cc174f); 
+            color: #fff !important; 
+            border: none !important; 
+            box-shadow: 0 4px 11px rgba(204, 23, 79, 0.4); 
+            animation: pulseVoice 2s infinite; 
+            padding: 9px 25px; 
+            font-weight: bold; 
+            opacity: 0; 
+            transition: opacity 1s ease; 
+        }
+        .voice-btn:hover { 
+            transform: translateY(-2px) scale(1.05); 
+            background: linear-gradient(145deg, #ff85a1, #d62b61); 
+        }
+        @keyframes pulseVoice { 
+            0% { box-shadow: 0 0 0 0 rgba(255, 79, 135, 0.7); } 
+            70% { box-shadow: 0 0 0 11px rgba(255, 79, 135, 0); } 
+            100% { box-shadow: 0 0 0 0 rgba(255, 79, 135, 0); } 
+        }
+
+        /* --- SCENE 0: PASSWORD LOCK --- */
+        input[type="password"] { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1.5px solid rgba(255, 133, 161, 0.5); 
+            color: #ffdae0; 
+            padding: 11px 18px; 
+            font-size: 0.85rem; 
+            border-radius: 22px; 
+            text-align: center; 
+            font-family: 'Lora', serif; 
+            outline: none; 
+            width: 160px; 
+            letter-spacing: 2px; 
+            transition: all 0.3s ease; 
+            margin-top: 15px; 
+        }
+        input[type="password"]:focus { 
+            border-color: #ff85a1; 
+            box-shadow: 0 0 11px rgba(255, 133, 161, 0.4); 
+        }
+        .error-msg { 
+            color: #ff4f87; 
+            font-size: 0.7rem; 
+            margin-top: 11px; 
+            opacity: 0; 
+            transition: opacity 0.3s; 
+            height: 15px; 
+        }
+
+        /* --- SCENE 1: INTRO TEXT --- */
+        #intro-text { 
+            font-size: clamp(1.1rem, 1.8vw, 1.8rem); 
+            letter-spacing: 1.5px; 
+            animation: pulseText 1.5s infinite alternate; 
+            transition: opacity 0.5s; 
+        }
+        @keyframes pulseText { 
+            0% { opacity: 0.5; } 
+            100% { opacity: 1; text-shadow: 0 0 15px rgba(255,133,161,0.8); } 
+        }
+
+        /* --- SCENE 2: PHOTO REVEAL --- */
+        .reveal-photo { 
+            width: clamp(160px, 26vw, 235px); 
+            height: clamp(220px, 33vw, 308px); 
+            object-fit: cover; 
+            border-radius: 11px; 
+            border: 2.5px solid rgba(255, 133, 161, 0.4); 
+            box-shadow: 0 0 37px rgba(255, 133, 161, 0.3); 
+            animation: zoomReveal 4s ease forwards; 
+        }
+        @keyframes zoomReveal { 
+            from { transform: scale(0.8); opacity: 0; } 
+            to { transform: scale(1); opacity: 1; } 
+        }
+        #countdown-text { 
+            font-size: clamp(4.4rem, 11vw, 11rem); 
+            font-family: 'Great Vibes', cursive; 
+            color: #ff85a1; 
+            text-shadow: 0 0 37px rgba(255, 133, 161, 0.8); 
+            display: none; 
+        }
+
+        /* --- SCENE 3: GIFT BOX --- */
+        .gift-container { position: relative; margin-top: 29px; transition: transform 0.3s; }
+        .gift-container:hover { transform: scale(1.05); }
+        .gift-box { width: 146px; height: 117px; background: linear-gradient(145deg, #ff4f87, #cc174f); border-radius: 7px; position: relative; box-shadow: 0 15px 29px rgba(0,0,0,0.5); }
+        .gift-lid { width: 160px; height: 36px; background: linear-gradient(145deg, #ff85a1, #d62b61); border-radius: 6px; position: absolute; top: -18px; left: -7px; box-shadow: 0 7px 15px rgba(0,0,0,0.3); transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.8s; z-index: 5; }
+        .ribbon-v { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 22px; height: 100%; background: linear-gradient(90deg, #ffe59a, #b57615); }
+        .ribbon-h { position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 100%; height: 22px; background: linear-gradient(0deg, #ffe59a, #b57615); }
+        .lid-ribbon { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 22px; height: 100%; background: linear-gradient(90deg, #ffe59a, #b57615); }
+        .bow { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-size: 44px; filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3)); }
+        .gift-container.opened .gift-lid { transform: translateY(-88px) rotate(15deg) scale(1.1); opacity: 0; }
+        .gift-container.opened .gift-box { animation: giftFade 1s forwards; animation-delay: 0.3s; }
+        @keyframes giftFade { to { opacity: 0; transform: scale(0.8); } }
+
+        /* --- SCENE 3.5: PRANK FOLDER --- */
+        #joke-container { display: none; transform: scale(0.1); transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); margin-top: 15px; }
+        .funny-img { width: clamp(185px, 29vw, 255px); border-radius: 11px; border: 3px solid #cc174f; box-shadow: 0 0 37px rgba(204, 23, 79, 0.6); }
+
+        /* --- SCENE 3.75: 3D FILM STRIP --- */
+        #scene-film { max-width: 100%; }
+        .subtitle { font-family: 'Courier Prime', monospace; font-size: 0.85rem; letter-spacing: 2px; color: #ffb3c6; margin-bottom: 45px; text-transform: uppercase; z-index: 50; position: relative; }
+        .film-stage { perspective: 1000px; width: 100vw; display: flex; justify-content: center; align-items: center; }
+        .film-viewport { width: 120vw; display: flex; transform-style: preserve-3d; transform: rotateX(25deg) rotateY(-20deg) rotateZ(-5deg); -webkit-box-reflect: below 5px linear-gradient(transparent 30%, rgba(255,255,255,0.4)); }
+        .film-track { display: flex; width: max-content; animation: scrollFilm 60s linear infinite; }
+        @keyframes scrollFilm { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .film-strip { display: flex; background: #000; padding: 15px 10px; border-top: 3px solid #111; border-bottom: 3px solid #111; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .film-strip::before, .film-strip::after { content: ''; position: absolute; left: 0; right: 0; height: 9px; background-image: linear-gradient(to right, transparent 0, transparent 4px, #fff 4px, #fff 12px, transparent 12px); background-size: 18px 9px; background-repeat: repeat-x; }
+        .film-strip::before { top: 4px; }
+        .film-strip::after { bottom: 4px; }
+        .film-frame { width: 180px; height: 120px; background: #fff; margin: 0 10px; border-radius: 2px; display: flex; justify-content: center; align-items: center; position: relative; }
+        .film-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%) contrast(1.1); }
+
+        /* --- SCENE 4: 3D V-SHAPE STORYBOOK --- */
+        .book-stage { perspective: 2200px; width: 700px; height: 425px; display: flex; justify-content: center; transform-style: preserve-3d; transform: rotateX(12deg); transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); margin: 11px 0; position: relative; }
+        .book-stage.closed { transform: rotateX(12deg) translateX(-175px); }
+        .book-stage.closed .left-base { opacity: 0; transition: opacity 0.3s; }
+        .book-stage:not(.closed) .left-base { opacity: 1; transition: opacity 0.5s 0.3s; }
+        
+        .page { position: absolute; width: 350px; height: 425px; left: 50%; transform-origin: left center; transform-style: preserve-3d; }
+        .paper { position: absolute; width: 350px; height: 425px; background: #fdfbf7; padding: 29px; box-sizing: border-box; display: flex; flex-direction: column; backface-visibility: hidden; overflow: hidden; }
+        .content-wrapper { flex: 1; display: flex; flex-direction: column; justify-content: space-between; position: relative; z-index: 10; }
+
+        .left-base { transform: rotateY(-165deg); z-index: 5; }
+        .left-base .paper { transform: rotateY(180deg); border-radius: 9px 0 0 9px; box-shadow: 0 15px 29px rgba(0,0,0,0.6), inset -18px 0 25px rgba(0,0,0,0.06); border-right: 1px solid #e0dcd3; }
+        .right-base { transform: rotateY(-15deg); z-index: 5; }
+        .right-base .paper { border-radius: 0 9px 9px 0; box-shadow: 0 15px 29px rgba(0,0,0,0.6), inset 18px 0 25px rgba(0,0,0,0.06); border-left: 1px solid #fff; }
+
+        .flip-page { transform: rotateY(-15deg); transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); z-index: 30; }
+        .flip-page.turned { transform: rotateY(-165deg); }
+        .flip-page .front { border-radius: 0 9px 9px 0; border-left: 1px solid #fff; box-shadow: 0 15px 29px rgba(0,0,0,0.6), inset 18px 0 25px rgba(0,0,0,0.06); }
+        .flip-page .back { transform: rotateY(180deg); border-radius: 9px 0 0 9px; border-right: 1px solid #e0dcd3; box-shadow: 0 15px 29px rgba(0,0,0,0.6), inset -18px 0 25px rgba(0,0,0,0.06); }
+
+        .royal-frame::before { content: ''; position: absolute; top: 9px; bottom: 9px; left: 9px; right: 9px; border: 1.5px solid #d4af37; pointer-events: none; z-index: 5; }
+        .royal-frame::after { content: ''; position: absolute; top: 13px; bottom: 13px; left: 13px; right: 13px; border: 1px solid rgba(212, 175, 55, 0.5); pointer-events: none; z-index: 5; }
+        .royal-corner { position: absolute; width: 9px; height: 9px; background: #fdfbf7; border: 1.5px solid #d4af37; z-index: 6; }
+        .rc-tl { top: 8px; left: 8px; } .rc-tr { top: 8px; right: 8px; } .rc-bl { bottom: 8px; left: 8px; } .rc-br { bottom: 8px; right: 8px; }
+
+        .watercolor-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .watercolor-bg::before, .watercolor-bg::after { content: ''; position: absolute; width: 160px; height: 160px; filter: blur(18px); opacity: 0.6; border-radius: 50%; }
+        .watercolor-bg::before { top: -29px; left: -29px; background: radial-gradient(circle, rgba(255,133,161,0.6) 0%, rgba(163,184,153,0.3) 60%, transparent 80%); }
+        .watercolor-bg::after { bottom: -29px; right: -29px; background: radial-gradient(circle, rgba(255,133,161,0.6) 0%, rgba(163,184,153,0.3) 60%, transparent 80%); }
+
+        .wreath-border { position: absolute; top: 29px; bottom: 29px; left: 22px; right: 22px; border: 1.5px dashed rgba(255, 133, 161, 0.6); border-radius: 50%; pointer-events: none; z-index: 5; }
+        .wreath-blossom { position: absolute; color: #ff85a1; font-size: 1.3rem; background: #fdfbf7; border-radius: 50%; padding: 0 2.5px; line-height: 1; }
+        .wb-top { top: -10px; left: 50%; transform: translateX(-50%); } .wb-bottom { bottom: -10px; left: 50%; transform: translateX(-50%); }
+
+        .story-photo-container { width: 100%; height: 315px; background: #fff; border: 2.5px solid #eee; border-radius: 3px; box-shadow: 0 3px 11px rgba(0,0,0,0.15); overflow: hidden; position: relative; z-index: 10; margin-bottom: 11px; }
+        .story-photo-container img { width: 100%; height: 100%; object-fit: cover; }
+        .story-text-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 10; padding: 0 15px; text-align: center; }
+        .story-caption { font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: #4a0019; text-align: center; line-height: 1.3; }
+        .story-counter { text-align: right; font-size: 0.7rem; color: #a99; font-style: italic; z-index: 10; margin-top: auto; }
+        .story-counter-left { text-align: left; font-size: 0.7rem; color: #a99; font-style: italic; z-index: 10; margin-top: auto; }
+        .gallery-controls { display: flex; gap: 15px; margin-top: 18px; align-items: center; position: relative; z-index: 50; }
+
+        /* --- SCENE 5: POEM --- */
+        .poem-container { text-align: center; max-width: 510px; }
+        .poem-line { opacity: 0; transform: translateY(15px); transition: opacity 1.2s ease, transform 1.2s ease; }
+        .poem-line.visible { opacity: 1; transform: translateY(0); }
+        .poem-text p { font-size: 0.95rem; line-height: 1.8; margin: 4px 0; color: #ffdae0; }
+
+       /* --- SCENE 6: 3D CAROUSEL --- */
+        .carousel-container { perspective: 880px; width: 100%; height: 280px; display: flex; justify-content: center; align-items: center; margin: 29px 0; }
+        .carousel { position: relative; width: 220px; height: 168px; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .carousel-card { position: absolute; width: 100%; height: 100%; border-radius: 9px; border: 3px solid rgba(255, 133, 161, 0.5); box-shadow: 0 15px 33px rgba(0,0,0,0.7); overflow: hidden; background: #0a0003; }
+        .carousel-card img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .c1 { transform: rotateY(0deg) translateZ(205px); } 
+        .c2 { transform: rotateY(72deg) translateZ(205px); }
+        .c3 { transform: rotateY(144deg) translateZ(205px); } 
+        .c4 { transform: rotateY(216deg) translateZ(205px); }
+        .c5 { transform: rotateY(288deg) translateZ(205px); }
+        
+        #carousel-cap { font-family: 'Great Vibes', cursive; font-size: 1.45rem; color: #ff85a1; height: 25px; transition: opacity 0.4s ease; margin-top: 36px; }
+
+        /* --- SCENE 7: LETTER --- */
+        .split-layout { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 44px; width: 100%; text-align: left; }
+        .text-container { flex: 1; max-width: 400px; display: flex; flex-direction: column; align-items: flex-start; min-height: 280px; }
+        .type-text { font-size: 0.8rem; line-height: 1.7; margin-bottom: 11px; min-height: 1.25rem; }
+        .type-text.typing::after { content: '|'; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .fade-text { opacity: 0; transform: translateY(22px); transition: opacity 1.8s ease, transform 1.8s ease; }
+        .fade-text.visible { opacity: 1; transform: translateY(0); }
+        
+        .final-frame { width: 205px; height: 280px; background: rgba(255, 255, 255, 0.05); padding: 11px; border: 2.5px solid rgba(255, 133, 161, 0.4); border-radius: 9px; box-shadow: 0 15px 37px rgba(0,0,0,0.6); display: flex; flex-direction: column; align-items: center; transform: rotate(-3deg); }
+        .final-frame img { width: 100%; height: calc(100% - 29px); object-fit: cover; border-radius: 4px; }
+
+        /* --- DESKTOPS --- */
+        @media (min-width: 1400px) {
+            .book-stage { transform: scale(1.15) rotateX(12deg); }
+            .book-stage.closed { transform: scale(1.15) rotateX(12deg) translateX(-175px); }
+            .carousel-container { transform: scale(1.15); }
+            .split-layout { transform: scale(1.15); }
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 1000px) {
+            .book-stage { transform: scale(0.75) rotateX(12deg); }
+            .book-stage.closed { transform: scale(0.75) rotateX(12deg) translateX(-175px); }
+        }
+        @media (max-width: 768px) {
+            .book-stage { transform: scale(0.5) rotateX(12deg); }
+            .book-stage.closed { transform: scale(0.5) rotateX(12deg) translateX(-175px); }
+            .split-layout { flex-direction: column; gap: 22px; padding: 0 15px; text-align: center; }
+            .text-container { align-items: center; min-height: auto; }
+            .final-frame { width: 160px; height: 220px; margin: 0 auto; }
+            .type-text { font-size: 0.75rem; }
+            .text-container h1.fade-text[style] { font-size: 1.6rem !important; }
+            .poem-container { padding: 0 11px; }
+            .poem-text p { font-size: 0.8rem; }
+            .poem-container h1 { font-size: 1.8rem !important; }
+        }
+        @media (max-width: 450px) {
+            .book-stage { transform: scale(0.38) rotateX(12deg); margin: 0; }
+            .book-stage.closed { transform: scale(0.38) rotateX(12deg) translateX(-175px); }
+            .gallery-controls button { padding: 6px 15px; font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="voice-note">
+        <source src="music/voicenote.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" class="music-toggle" onclick="toggleMusic()" title="Play/Pause Music">🎵</button>
+    <div id="particles"></div>
+
+    <!-- SCENE 0 -->
+    <div id="scene0" class="scene active">
+        <h1 style="font-size: clamp(1.4rem, 2.9vw, 2.5rem);">Security Verification 🔒</h1>
+        <p style="font-style: italic; color: #a99; font-size: 0.75rem; margin-top: 8px;">Enter your Date of Birth (DDMMYYYY) to access your files</p>
+        <input type="password" id="dob-password" placeholder="Enter PIN...">
+        <div class="error-msg" id="error-msg">❌ Imposter detected! Try again.</div>
+        <button onclick="checkPassword()">Unlock ❤️</button>
+    </div>
+
+    <!-- SCENE 1 -->
+    <div id="scene1" class="scene">
+        <h2 id="intro-text">Initializing Birthday Protocol...</h2>
+    </div>
+
+    <!-- SCENE 2 -->
+    <div id="scene2" class="scene">
+        <div id="reveal-content">
+            <img class="reveal-photo" src="intro/1.jpeg" alt="Malkin">
+            <h1 style="margin-top: 15px;">Happy Birthday Malkin ❤️</h1>
+            <p style="font-size: 0.75rem;">21st October — The day my favorite human was born.</p>
+        </div>
+        <div id="countdown-text">3 ❤️</div>
+    </div>
+
+    <!-- SCENE 3 -->
+    <div id="scene3" class="scene">
+        <h1>A Special Delivery ❤️</h1>
+        <p style="font-size: 0.75rem;">Click the gift to open your surprise, Princess...</p>
+        <div class="gift-container" id="gift" onclick="openGift()">
+            <div class="gift-lid"><div class="lid-ribbon"></div><div class="bow">🎀</div></div>
+            <div class="gift-box"><div class="ribbon-v"></div><div class="ribbon-h"></div></div>
+        </div>
+    </div>
+
+    <!-- SCENE 3.5 -->
+    <div id="scene-joke" class="scene">
+        <h1 id="prank-title" style="color: #ffdae0; transition: opacity 0.5s;">Accessing Birthday Files...</h1>
+        <div id="joke-container">
+            <img class="funny-img" src="intro/2.jpeg" alt="Funny Malkin">
+            <h2 style="font-family: 'Lora', serif; font-size: 1.1rem; margin-top: 15px;">Oops! Galti se Mistake hogai MADAM JII 🫣</h2>
+            <p style="font-style: italic; color: #a99; font-size: 1.45rem;">SORRY.......SORRY......SORRY......!!!!!! </p>
+        </div>
+    </div>
+
+    <!-- SCENE 3.75: 3D FILM STRIP TRANSITION -->
+    <div id="scene-film" class="scene">
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <h1 style="font-size: 3rem; margin-bottom: 5px; z-index: 50; position: relative;">A Journey Through Time</h1>
+            <div class="subtitle">DEVELOPING MEMORIES</div>
+            
+            <div class="film-stage">
+                <div class="film-viewport">
+                    <div class="film-track">
+                        <!-- Group 1: 15 items long -->
+                        <div class="film-strip">
+                            <div class="film-frame"><img src="her/1.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/2.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/3.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/4.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/5.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/6.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/7.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/8.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/9.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/10.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/11.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/12.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/13.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/14.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/15.jpeg" alt=""></div>
+                        </div>
+                        <!-- Group 2 (Clone for seamless continuous loop) -->
+                        <div class="film-strip">
+                            <div class="film-frame"><img src="her/1.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/2.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/3.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/4.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/5.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/6.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/7.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/8.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/9.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/10.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/11.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/12.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/13.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/14.jpeg" alt=""></div>
+                            <div class="film-frame"><img src="her/15.jpeg" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transition Button directly to Book -->
+            <button onclick="goToScene('scene4'); updateBookContent();" style="margin-top: 40px; z-index: 100; position: relative;">Open The Storybook 📖 ›</button>
+        </div>
+    </div>
+
+    <!-- SCENE 4 -->
+    <div id="scene4" class="scene">
+        <h1 id="book-main-title" style="opacity: 0; transition: opacity 1s ease; margin-bottom: 37px;">The Beautiful You ✨</h1>
+        <div class="book-stage closed" id="book-stage">
+            <div class="page left-base">
+                <div class="paper royal-frame">
+                    <div class="watercolor-bg"></div>
+                    <div class="royal-corner rc-tl"></div><div class="royal-corner rc-tr"></div>
+                    <div class="royal-corner rc-bl"></div><div class="royal-corner rc-br"></div>
+                    <div id="left-base-content" class="content-wrapper"></div>
+                </div>
+            </div>
+            <div class="page right-base">
+                <div class="paper royal-frame">
+                    <div class="watercolor-bg"></div>
+                    <div class="royal-corner rc-tl"></div><div class="royal-corner rc-tr"></div>
+                    <div class="royal-corner rc-bl"></div><div class="royal-corner rc-br"></div>
+                    <div id="right-base-content" class="content-wrapper"></div>
+                </div>
+            </div>
+            <div class="page flip-page" id="flip-page">
+                <div class="paper front royal-frame">
+                    <div class="watercolor-bg"></div>
+                    <div class="royal-corner rc-tl"></div><div class="royal-corner rc-tr"></div>
+                    <div class="royal-corner rc-bl"></div><div class="royal-corner rc-br"></div>
+                    <div id="flip-front-content" class="content-wrapper"></div>
+                </div>
+                <div class="paper back royal-frame">
+                    <div class="watercolor-bg"></div>
+                    <div class="royal-corner rc-tl"></div><div class="royal-corner rc-tr"></div>
+                    <div class="royal-corner rc-bl"></div><div class="royal-corner rc-br"></div>
+                    <div id="flip-back-content" class="content-wrapper"></div>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-controls">
+            <button id="prev-story-btn" onclick="turnPage('prev')" style="display:none;">‹ Prev Page</button>
+            <button id="next-story-btn" onclick="turnPage('next')">Open Book ›</button>
+        </div>
+    </div>
+
+    <!-- SCENE 5 -->
+    <div id="scene5" class="scene">
+        <div class="poem-container">
+            <h1 class="poem-line" style="margin-bottom: 15px; font-size: 2.5rem;">Mere Dil Ki Baat ✨</h1>
+            <div class="poem-text" style="font-style: italic;">
+                <p class="poem-line">अगर दिन लिखूंगा तो चली जाओगी,</p>
+                <p class="poem-line">अगर रात लिखूंगा तो ढल जाओगी</p>
+                <div style="height: 15px;"></div>
+                <p class="poem-line">अगर वादा लिखूंगा तो मुकर जाओगी,</p>
+                <p class="poem-line">अगर मौसम लिखूंगा तो बदल जाओगी</p>
+                <div style="height: 15px;"></div>
+                <p class="poem-line" style="font-weight: bold; color: #ff85a1;">चलो तुम्हारा नाम 'सांस' रख देता हूँ,</p>
+                <p class="poem-line">जब तक रहोगी, साथ रहोगी</p>
+                <p class="poem-line">जब जाओगी तो मुझे अपने साथ ले जाओगी ❤️</p>
+            </div>
+            <button class="poem-line" style="margin-top: 25px;" onclick="goToScene('scene6')">Our Moments ❤️</button>
+        </div>
+    </div>
+
+    <!-- SCENE 6 -->
+    <div id="scene6" class="scene">
+        <h1>Our Beautiful Moments ❤️</h1>
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <div class="carousel-card c1"><img src="us/1.jpeg" alt="Us 1"></div>
+                <div class="carousel-card c2"><img src="us/2.jpeg" alt="Us 2"></div>
+                <div class="carousel-card c3"><img src="us/3.jpeg" alt="Us 3"></div>
+                <div class="carousel-card c4"><img src="us/4.jpeg" alt="Us 4"></div>
+                <div class="carousel-card c5"><img src="us/5.jpeg" alt="Us 5"></div>
+            </div>
+        </div>
+        <div id="carousel-cap">Where my favorite story began ❤️</div>
+        <div class="gallery-controls">
+            <button onclick="spinCarousel('prev')">‹ Spin</button>
+            <button onclick="goToScene('scene7')">Read My Letter ❤️</button>
+            <button onclick="spinCarousel('next')">Spin ›</button>
+        </div>
+    </div>
+
+    <!-- SCENE 7 -->
+    <div id="scene7" class="scene">
+        <div class="split-layout">
+            <div class="final-frame">
+                <img src="intro/3.jpeg" alt="Malkin">
+                <div style="margin-top:7px; font-family:'Lora'; font-style:italic; font-size: 0.7rem; color:#999;">My Entire World ❤️</div>
+            </div>
+            <div class="text-container">
+                <h1 class="fade-text">My Love,</h1>
+                <p class="type-text" data-text="Before I met you, I didn't know what it meant to look at someone and see my entire future."></p>
+                <p class="type-text" data-text="You are my peace, my greatest adventure, and the most beautiful part of my life. Every single day with you feels like a gift I never knew I needed."></p>
+                <p class="type-text" data-text="I promise to love you, protect you, and cherish you for all the birthdays to come. You mean everything to me."></p>
+                <p class="fade-text" style="font-family: 'Great Vibes'; font-size: 2.2rem; color: #ff85a1; margin-top: 15px;">Forever Yours, Ankit</p>
+                <button class="fade-text voice-btn" id="play-voice-btn" style="margin-top: 22px;" onclick="playVoiceNote()">▶ Play Audio Message</button>
+                <div class="fade-text" style="margin-top: 37px; text-align: center; width: 100%;">
+                    <div style="font-style: italic; color: #a99; font-size: 0.7rem; margin-bottom: 7px;">End of Birthday Protocol</div>
+                    <button onclick="restartWebsite()">↺ Relive the Memories</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- UTILITY FUNCTIONS ---
+        function shootConfetti() { 
+            const colors = ['#ff85a1', '#ffdae0', '#cc174f', '#ffffff']; 
+            for(let i = 0; i < 100; i++) { 
+                const conf = document.createElement('div'); 
+                conf.className = 'confetti'; 
+                conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; 
+                conf.style.left = Math.random() * 100 + 'vw'; 
+                conf.style.animationDuration = (Math.random() * 2.5 + 2) + 's'; 
+                document.body.appendChild(conf); 
+                setTimeout(() => conf.remove(), 5000); 
+            } 
+        }
+
+        function checkPassword() { 
+            const pwd = document.getElementById('dob-password').value; 
+            const errorMsg = document.getElementById('error-msg'); 
+            
+            if(pwd === "21102001") { 
+                errorMsg.style.opacity = 0; 
+                shootConfetti(); 
+                document.getElementById('bg-music').play(); 
+                document.getElementById('music-toggle').classList.add('visible'); 
+                
+                setTimeout(() => { 
+                    goToScene('scene1'); 
+                    setTimeout(playIntro, 800); 
+                }, 800); 
+            } else { 
+                errorMsg.style.opacity = 1; 
+                document.getElementById('dob-password').value = ''; 
+            } 
+        }
+
+        document.getElementById("dob-password").addEventListener("keypress", function(event) { 
+            if (event.key === "Enter") { 
+                event.preventDefault(); 
+                checkPassword(); 
+            } 
+        });
+
+        function toggleMusic() { 
+            const bgMusic = document.getElementById('bg-music'); 
+            const toggleBtn = document.getElementById('music-toggle'); 
+            
+            if (bgMusic.paused) { 
+                bgMusic.play(); 
+                toggleBtn.innerText = '🎵'; 
+                toggleBtn.classList.remove('muted'); 
+            } else { 
+                bgMusic.pause(); 
+                toggleBtn.innerText = '🔇'; 
+                toggleBtn.classList.add('muted'); 
+            } 
+        }
+
+        function createParticles() { 
+            const container = document.getElementById('particles'); 
+            for (let i = 0; i < 40; i++) { 
+                spawnSingleHeart(container); 
+            } 
+        }
+
+        function spawnSingleHeart(container) { 
+            const p = document.createElement('div'); 
+            p.className = 'particle'; 
+            p.innerHTML = '❤️'; 
+            p.style.left = Math.random() * 100 + 'vw'; 
+            p.style.fontSize = (Math.random() * 11 + 7.5) + 'px'; 
+            p.style.animationDuration = (Math.random() * 8 + 6) + 's'; 
+            p.style.animationDelay = (Math.random() * 8) + 's'; 
+            
+            p.onclick = function() { 
+                const rect = p.getBoundingClientRect(); 
+                const x = rect.left + rect.width / 2; 
+                const y = rect.top + rect.height / 2; 
+                p.remove(); 
+                createSparkles(x, y); 
+                setTimeout(() => spawnSingleHeart(container), 1500); 
+            }; 
+            container.appendChild(p); 
+        }
+
+        function createSparkles(x, y) { 
+            for(let i = 0; i < 6; i++) { 
+                const s = document.createElement('div'); 
+                s.className = 'sparkle'; 
+                s.style.left = x + 'px'; 
+                s.style.top = y + 'px'; 
+                const angle = Math.random() * Math.PI * 2; 
+                const distance = Math.random() * 30 + 15; 
+                s.style.setProperty('--tx', Math.cos(angle) * distance + 'px'); 
+                s.style.setProperty('--ty', Math.sin(angle) * distance + 'px'); 
+                document.body.appendChild(s); 
+                setTimeout(() => s.remove(), 600); 
+            } 
+        }
+        
+        createParticles();
+
+        function playVoiceNote() { 
+            const bgMusic = document.getElementById('bg-music'); 
+            const voiceNote = document.getElementById('voice-note'); 
+            const btn = document.getElementById('play-voice-btn'); 
+            
+            if(voiceNote.paused) { 
+                bgMusic.volume = 0.15; 
+                voiceNote.play(); 
+                btn.innerText = "⏸ Listening..."; 
+                btn.classList.remove('voice-btn'); 
+                
+                voiceNote.onended = function() { 
+                    bgMusic.volume = 1.0; 
+                    btn.innerText = "▶ Play Again"; 
+                    btn.classList.add('voice-btn'); 
+                }; 
+            } else { 
+                voiceNote.pause(); 
+                bgMusic.volume = 1.0; 
+                btn.innerText = "▶ Play Audio Message"; 
+                btn.classList.add('voice-btn'); 
+            } 
+        }
+
+        function typeWriter(element, text, index, speed, onComplete) { 
+            if (index === 0) { 
+                element.classList.add('typing'); 
+            } 
+            if (index < text.length) { 
+                element.innerHTML += text.charAt(index); 
+                setTimeout(() => typeWriter(element, text, index + 1, speed, onComplete), speed); 
+            } else { 
+                element.classList.remove('typing'); 
+                if (onComplete) onComplete(); 
+            } 
+        }
+
+        // --- SCENE MANAGEMENT ---
+        function goToScene(sceneId) { 
+            document.querySelector('.scene.active').classList.remove('active'); 
+            const next = document.getElementById(sceneId); 
+            next.classList.add('active'); 
+            
+            if(sceneId === 'scene5') { 
+                const lines = next.querySelectorAll('.poem-line'); 
+                lines.forEach((line, idx) => { 
+                    setTimeout(() => line.classList.add('visible'), 600 * (idx + 1)); 
+                }); 
+            } 
+            
+            if(sceneId === 'scene7') { 
+                next.querySelector('h1.fade-text').classList.add('visible'); 
+                const typeLines = next.querySelectorAll('.type-text'); 
+                const fadeLines = next.querySelectorAll('.fade-text:not(h1)'); 
+                
+                typeLines.forEach(line => line.innerHTML = ''); 
+                
+                setTimeout(() => { 
+                    typeWriter(typeLines[0], typeLines[0].getAttribute('data-text'), 0, 35, () => { 
+                        typeWriter(typeLines[1], typeLines[1].getAttribute('data-text'), 0, 35, () => { 
+                            typeWriter(typeLines[2], typeLines[2].getAttribute('data-text'), 0, 35, () => { 
+                                fadeLines.forEach((txt, idx) => { 
+                                    setTimeout(() => txt.classList.add('visible'), 400 * (idx + 1)); 
+                                }); 
+                            }); 
+                        }); 
+                    }); 
+                }, 1000); 
+            } 
+        }
+
+        // --- INTRO SEQUENCE ---
+        const introMessages = [
+            "Initializing Birthday Protocol...", 
+            "Searching For The Birthday Girl ❤️", 
+            "Cuteness Level: OVERLOADED ✨"
+        ]; 
+        let introIdx = 0;
+
+        function playIntro() { 
+            const introEl = document.getElementById('intro-text'); 
+            
+            if (introIdx < introMessages.length) { 
+                introEl.style.opacity = 0; 
+                
+                setTimeout(() => { 
+                    introEl.innerText = introMessages[introIdx]; 
+                    introEl.style.opacity = 1; 
+                    introIdx++; 
+                    setTimeout(playIntro, 2000); 
+                }, 500); 
+            } else { 
+                goToScene('scene2'); 
+                
+                setTimeout(() => { 
+                    document.getElementById('reveal-content').style.display = 'none'; 
+                    const countdownEl = document.getElementById('countdown-text'); 
+                    countdownEl.style.display = 'block'; 
+                    
+                    setTimeout(() => countdownEl.innerText = "2 ❤️", 1000); 
+                    setTimeout(() => countdownEl.innerText = "1 ❤️", 2000); 
+                    setTimeout(() => goToScene('scene3'), 3000); 
+                }, 4000); 
+            } 
+        }
+
+        let giftOpened = false; 
+        
+        function openGift() { 
+            if(giftOpened) return; 
+            giftOpened = true; 
+            document.getElementById('gift').classList.add('opened'); 
+            
+            setTimeout(() => { 
+                goToScene('scene-joke'); 
+                
+                setTimeout(() => { 
+                    document.getElementById('prank-title').style.display = 'none'; 
+                    const jokeCont = document.getElementById('joke-container'); 
+                    jokeCont.style.display = 'block'; 
+                    
+                    setTimeout(() => { 
+                        jokeCont.style.transform = 'scale(1)'; 
+                    }, 50); 
+                    
+                    setTimeout(() => { 
+                        goToScene('scene-film'); 
+                    }, 4500); 
+                }, 1000); 
+            }, 1500); 
+        }
+
+        // --- 3D BOOK DATA & FUNCTIONS ---
+        const storyData = [ 
+            { img: 1, cap: "My favorite picture of you ✨" }, 
+            { img: 2, cap: "The smile that brightens my day ❤️" }, 
+            { img: 3, cap: "Pure happiness in one picture ❤️" }, 
+            { img: 4, cap: "My lucky charm 💕" }, 
+            { img: 5, cap: "A moment I will never forget ✨" }, 
+            { img: 6, cap: "Looking absolutely stunning ❤️" }, 
+            { img: 7, cap: "That smile is magic ✨" }, 
+            { img: 8, cap: "Elegance at its finest 🌹" }, 
+            { img: 9, cap: "Cute and beautiful ❤️" }, 
+            { img: 10, cap: "One of my favorites ❤️" }, 
+            { img: 11, cap: "You light up every room ✨" }, 
+            { img: 12, cap: "My heart skips a beat 💖" }, 
+            { img: 13, cap: "Absolutely flawless 🌸" }, 
+            { img: 14, cap: "Perfect in every way ❤️" }, 
+            { img: 15, cap: "A picture I will never stop loving ✨" }, 
+            { img: 16, cap: "Beautiful inside and out ❤️" }, 
+            { img: 17, cap: "My favorite person 💕" }, 
+            { img: 18, cap: "You make every moment special 🌸" }, 
+            { img: 19, cap: "Always making me smile 😊" }, 
+            { img: 20, cap: "My everyday magic ❤️" }, 
+            { img: 21, cap: "Simply gorgeous ✨" }, 
+            { img: 22, cap: "Mine forever ❤️" }, 
+            { img: 23, cap: "Timeless beauty....✨" },
+            { img: 24, cap: "Chapter 25 begins... ✨" }, 
+            { img: 25, cap: "The Most Beautiful 25-Year-Old ❤️" } 
+        ];
+
+        let currentIndex = -1; 
+        let isFlipping = false;
+        
+        const coverHTML = `
+            <div class="story-text-content">
+                <h1 style="font-size: 3.3rem !important; color: #cc174f; text-shadow: none; margin-bottom: 7px;">The Beautiful<br>You</h1>
+                <div style="font-size: 0.9rem !important; color: #ff85a1; font-style: italic;">A Collection of My Favorite Moments</div>
+            </div>
+            <div class="story-counter">Title Page</div>`;
+
+        function getPhotoHTML(index, side) { 
+            const pageNum = (index * 2) + 1; 
+            const counterClass = side === 'left' ? 'story-counter-left' : 'story-counter'; 
+            
+            return `
+                <div class="story-photo-container">
+                    <img src="her/${storyData[index].img}.jpeg" alt="Photo">
+                </div>
+                <div class="${counterClass}">Page ${pageNum} / 50</div>`; 
+        }
+
+        function getCaptionHTML(index) { 
+            const pageNum = (index * 2) + 2; 
+            
+            return `
+                <div class="wreath-border">
+                    <div class="wreath-blossom wb-top">❀</div>
+                    <div class="wreath-blossom wb-bottom">❀</div>
+                </div>
+                <div class="story-text-content">
+                    <div class="story-caption">${storyData[index].cap}</div>
+                </div>
+                <div class="story-counter">Page ${pageNum} / 50</div>`; 
+        }
+
+        function updateBookContent() { 
+            const leftBaseContent = document.getElementById('left-base-content'); 
+            const rightBaseContent = document.getElementById('right-base-content'); 
+            const flipFrontContent = document.getElementById('flip-front-content'); 
+            const flipBackContent = document.getElementById('flip-back-content'); 
+            const bookMainTitle = document.getElementById('book-main-title'); 
+            
+            if (currentIndex === -1) { 
+                flipFrontContent.innerHTML = coverHTML; 
+                flipBackContent.innerHTML = getPhotoHTML(0, 'left'); 
+                rightBaseContent.innerHTML = getCaptionHTML(0); 
+                leftBaseContent.innerHTML = ''; 
+                bookMainTitle.style.opacity = '0'; 
+            } else { 
+                leftBaseContent.innerHTML = getPhotoHTML(currentIndex, 'left'); 
+                flipFrontContent.innerHTML = getCaptionHTML(currentIndex); 
+                const nextIdx = currentIndex + 1; 
+                
+                if (nextIdx < storyData.length) { 
+                    flipBackContent.innerHTML = getPhotoHTML(nextIdx, 'left'); 
+                    rightBaseContent.innerHTML = getCaptionHTML(nextIdx); 
+                } else { 
+                    flipBackContent.innerHTML = ''; 
+                    rightBaseContent.innerHTML = ''; 
+                } 
+                bookMainTitle.style.opacity = '1'; 
+            } 
+            
+            const nextBtn = document.getElementById('next-story-btn'); 
+            const prevBtn = document.getElementById('prev-story-btn'); 
+            
+            if (currentIndex === -1) { 
+                nextBtn.innerText = "Open Book ›"; 
+                prevBtn.style.display = 'none'; 
+            } else { 
+                prevBtn.style.display = 'inline-block'; 
+                if (currentIndex === storyData.length - 1) { 
+                    nextBtn.innerText = "A Poem For You ✨"; 
+                } else { 
+                    nextBtn.innerText = "Next Page ›"; 
+                } 
+            } 
+        }
+
+        function turnPage(dir) { 
+            if (isFlipping) return; 
+            const flipPage = document.getElementById('flip-page'); 
+            const bookStage = document.getElementById('book-stage'); 
+            
+            if (dir === 'next') { 
+                if (currentIndex >= storyData.length - 1) { 
+                    goToScene('scene5'); 
+                    return; 
+                } 
+                
+                isFlipping = true; 
+                if (currentIndex === -1) { 
+                    bookStage.classList.remove('closed'); 
+                } 
+                
+                flipPage.classList.add('turned'); 
+                
+                setTimeout(() => { 
+                    currentIndex++; 
+                    updateBookContent(); 
+                    flipPage.style.transition = 'none'; 
+                    flipPage.classList.remove('turned'); 
+                    void flipPage.offsetWidth; 
+                    flipPage.style.transition = 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)'; 
+                    isFlipping = false; 
+                }, 1000); 
+                
+            } else { 
+                if (currentIndex <= -1) return; 
+                isFlipping = true; 
+                currentIndex--; 
+                updateBookContent(); 
+                
+                flipPage.style.transition = 'none'; 
+                flipPage.classList.add('turned'); 
+                void flipPage.offsetWidth; 
+                flipPage.style.transition = 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)'; 
+                flipPage.classList.remove('turned'); 
+                
+                if (currentIndex === -1) { 
+                    bookStage.classList.add('closed'); 
+                } 
+                
+                setTimeout(() => { 
+                    isFlipping = false; 
+                }, 1000); 
+            } 
+        }
+        
+        updateBookContent();
+
+        // --- CAROUSEL & RESTART ---
+        let carouselAngle = 0; 
+        const carouselCaptions = [
+            'Where my favorite story began ❤️', 
+            'The best team ✨', 
+            'Endless laughter with you 🌸', 
+            'My favorite place is by your side ❤️', 
+            'Here is to forever ✨'
+        ]; 
+        let currentCarouselIndex = 0;
+
+        function spinCarousel(direction) { 
+            const carousel = document.getElementById('carousel'); 
+            const capEl = document.getElementById('carousel-cap'); 
+            capEl.style.opacity = 0; 
+            
+            if (direction === 'next') { 
+                carouselAngle -= 72; 
+                currentCarouselIndex = (currentCarouselIndex + 1) % 5; 
+            } else { 
+                carouselAngle += 72; 
+                currentCarouselIndex = (currentCarouselIndex - 1 + 5) % 5; 
+            } 
+            
+            carousel.style.transform = `rotateY(${carouselAngle}deg)`; 
+            
+            setTimeout(() => { 
+                capEl.innerText = carouselCaptions[currentCarouselIndex]; 
+                capEl.style.opacity = 1; 
+            }, 400); 
+        }
+
+        function restartWebsite() { 
+            window.scrollTo(0, 0); 
+            setTimeout(() => { 
+                window.location.reload(); 
+            }, 300); 
+        }
+    </script>
+</body>
+</html>
